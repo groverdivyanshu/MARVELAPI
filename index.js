@@ -115,12 +115,14 @@ function showList(data ,id)
     var li=document.createElement('li');
     li.classList.add("list-style")
     const localdata=window.localStorage.getItem("Id");
-
-
-
-    
+if(localdata==null)
+{
+    li.innerHTML=`${data} <span id=${id} onclick=Renderfunction(${id}) class="favourite">"Add to Favouraite"</span>`;
+}
+else
+{ 
     li.innerHTML=`${data} <span id=${id} onclick=Renderfunction(${id}) class="favourite">${localdata.includes(id)?"Unfavouraite":"Add to Favouraite"}</span>`;
-
+} 
     list.append(li);
     
 }
