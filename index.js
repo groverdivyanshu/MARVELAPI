@@ -62,7 +62,7 @@ async function addtodom(element)
           <div class="text-center">${element.name}</div>
           <div class="red text-center">Series:<span class="white">${element.series.available}</span></div>
           <div class="red text-center">Story: <span class="white">${element.stories.available}</span></div>
-         <div> <button class="modification text-center mg-left"> <a href=" ${element.urls[2].url}">Comics:${element.comics.available}</a></button></div>
+         <div> <button class="modification text-center mg-left"> <a href=" ${element.urls[2] ? element.urls[2].url : "..."}">Comics:${element.comics.available}</a></button></div>
          <div> <button class="modification text-center mg-left" onclick=characterdata(${element.id})>More Details</a></button></div>\
    
         
@@ -96,7 +96,7 @@ async function CharcterApi(val)
 {
     
    
-    const character=await fetch(`http://gateway.marvel.com/v1/public/characters?ts=1&apikey=9acf637e6636769cbf95dcbbb5b64523&hash=424b73615615ef16f25f749805e60e00&nameStartsWith=${val}&limit=100`);
+    const character=await fetch(`http://gateway.marvel.com/v1/public/characters?ts=1&apikey=9acf637e6636769cbf95dcbbb5b64523&hash=424b73615615ef16f25f749805e60e00&nameStartsWith=${val}&limit=20`);
     const data=await character.json();
     Itreate(data.data.results);
     
@@ -178,7 +178,7 @@ async function characterdata(data)
           <div class="red text-center mg-top">Series:<span class="white">${element.series.available}</span></div>
           <div class="red text-center mg-top">Story: <span class="white">${element.stories.available}</span></div>
           <div class="red text-center mg-top">Story: <span class="white">${element.events.available}</span></div>
-         <div> <button class="modification text-center mg-left1 mg-top"> <a href=" ${element.urls[2].url}">Comics:${element.comics.available}</a></button></div>
+         <div> <button class="modification text-center mg-left1 mg-top"> <a href=" ${element.urls[2] ? element.urls[2].url : "..."}">Comics:${element.comics.available}</a></button></div>
            <div class="text-center mg-top">Description:${element.description}</div>
    
         
